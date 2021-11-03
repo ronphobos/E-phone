@@ -13,7 +13,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MessageController;
 
 //ROUTE USERS
-Route::get('/index', [UserController::class, 'index'])->name('user.index');
+Route::get('/', [UserController::class, 'index'])->name('user.index');
 Route::get('/a-propos', [UserController::class, 'a_propos'])->name('user.a_propos');
 Route::get('/contact', [UserController::class, 'contact'])->name('user.contact');
 Route::post('/contact', [MessageController::class, 'store'])->name('user.message');

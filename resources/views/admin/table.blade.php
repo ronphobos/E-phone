@@ -179,7 +179,7 @@
                                                 </tr>
                                             @endforeach
                                                 @else
-                                                    <p> Il n'ya aucun produit!</p>
+                                                    <p> Il n'ya aucune catégorie!</p>
                                                 @endif
                                             </tbody>
                                         </table>
@@ -221,7 +221,7 @@
                                                 </tr>
                                             @endforeach
                                                 @else
-                                                    <p> Il n'ya aucun produit!</p>
+                                                    <p> Il n'ya aucun message!</p>
                                                 @endif
                                             </tbody>
                                         </table>

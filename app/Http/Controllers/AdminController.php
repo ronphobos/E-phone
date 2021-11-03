@@ -23,6 +23,7 @@ class AdminController extends Controller
         $produits = Produit::get();
         $categories = Categorie::get();
         $charts = DB::table('produits')->get('*')->toArray();
+        // $data[] ="";
         foreach($charts as $row)
         {
             $data[] = array
@@ -32,7 +33,7 @@ class AdminController extends Controller
             );
         }
         // dd($data);
-        return view('admin.index', compact("title","produits","categories", "data"));
+        return view('admin.index', compact("title","produits","categories","data"));
     }
 
     public function table()

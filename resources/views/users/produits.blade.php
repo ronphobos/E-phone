@@ -44,7 +44,7 @@
                                         <h3>JenGu - {{$produit->name}}</h3>
                                         <hr class="separator">
                                         <p>{{$produit->category}}</p>
-                                        <div class="content-btn"><a href="service-details/ac-dry-servicing.html"
+                                        <div class="content-btn"><a href="{{ route('produit.show', $produit->id) }}"
                                                 class="btn btn-primary">Commander maintenant</a></div>
                                         <div class="price"><span>&#36;</span><b>prix</b>{{$produit->price}}</div>
                                     </div>
