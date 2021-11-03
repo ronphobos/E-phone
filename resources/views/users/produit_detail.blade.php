@@ -62,37 +62,68 @@
                             </div>
                             <div class="col-md-4">
                                 <aside class="widget" style="margin-top: 18px;">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">Détails de la commande</div>
-                                        <div class="panel-body">
-                                            <table class="table">
-                                                <tr>
-                                                    <td style="border-top: none;">Prix</td>
-                                                    <td style="border-top: none;">{{ $id->price }} FCFA</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Quntité</td>
-                                                    <td>1</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Remise</td>
-                                                    <td>0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Total</td>
-                                                    <td><span>&#36;</span> {{ $id->price }}</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="panel-footer">
-                                            <form>
-                                                <input type="submit" class="btn btn-primary" name="submit"
-                                                    value=" Commander maintenant">
-                                            </form>
-                                        </div>
-                                    </div>
-                                </aside>
+                                    {{-- @foreach ($users as $user) --}}
 
+
+                                    <form action="{{ route('order.store') }}" method="POST">
+                                        @csrf
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">Détails de la commande</div>
+                                            <div class="panel-body">
+                                                <input type="hidden" name="name_product" value="{{ $id->name }}">
+                                                <input type="hidden" name="prix_product" value="{{ $id->price }}">
+                                                <input type="hidden" name="remise_product" value="0">
+                                                <input type="hidden" name="photo_product" value="{{ $id->photo }}">
+                                                @foreach ($users as $user)
+                                                <input type="hidden" name="name_client" value="{{ $user->name }}">
+                                                <input type="hidden" name="email_client" value="{{ $user->email }}">
+                                                <input type="hidden" name="number_client" value="{{ $user->phone }}">
+                                                @endforeach
+                                                <table class="table">
+                                                    <tr>
+                                                        <td style="border-top: none;">Prix unitaire</td>
+                                                        <td style="border-top: none;">{{ $id->price }} FCFA</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Remise</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Quantité</td>
+                                                        <td><input type="number" class="form-control" autocomplete="off" id="route" name="quantite_product"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Mode de paiement</td>
+                                                        <td><div class="form-group">
+                                                            <select class="form-control" name="mode_payment" id="administrative_area_level_1">
+                                                                <option value="cash">Cash</option>
+                                                                <option value="mtn">MTN Money</option>
+                                                            </select>
+                                                        </div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Adresse géolocalisation</td>
+                                                        <td><input type="text" class="form-control" autocomplete="off" id="route" name="adresse_user"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="panel-footer">
+                                                @auth
+                                                        <input type="submit" class="btn btn-primary" name="submit"
+                                                            value="Effectuer la commande">
+
+                                                @endauth
+                                                @guest
+
+                                                    <a href="{{ route('user.login') }}"  class="btn btn-primary" name="submit"
+                                                        >Effectuer la commande </a>
+
+                                                @endguest
+                                            </div>
+                                        </div>
+                                    </form>
+                                </aside>
+                                {{-- @endforeach --}}
                             </div>
                         </div>
                     </div>

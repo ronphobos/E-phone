@@ -52,10 +52,18 @@
                                 </p>
                                 <form id="contactform" class="form-theme" action="{{ route('user.message') }}" method="post">
                                     @csrf
-
+                                    @auth
+                                    @foreach ($users as $user)
+                                    <input type="hidden" placeholder="Nom" name="name" value="{{ $user->name }}" id="name" required="">
+                                    <input type="hidden" placeholder="Email" value="{{ $user->email }}" name="email" id="email" required="">
+                                    <input type="hidden" placeholder="Phone" value="{{ $user->phone }}" name="phone" id="phone" required="">
+                                    @endforeach
+                                    @endauth
+                                    @guest
                                     <input type="text" placeholder="Nom" name="name" id="name" required="">
                                     <input type="email" placeholder="Email" name="email" id="email" required="">
                                     <input type="text" placeholder="Phone" name="phone" id="phone" required="">
+                                    @endguest
                                     <textarea placeholder="Votre Message..." name="message" id="message"
                                         required=""></textarea>
                                     <input type="submit" name="Submit" value="Envoyer le Message" class="btn btn-primary">

@@ -45,7 +45,7 @@
                                         <hr class="separator">
                                         <p>{{$produit->category}}</p>
                                         <div class="content-btn"><a href="{{ route('produit.show', $produit->id) }}"
-                                                class="btn btn-primary">Commander maintenant</a></div>
+                                                class="btn btn-primary">Voir les détails</a></div>
                                         <div class="price"><span>&#36;</span><b>prix</b>{{$produit->price}}</div>
                                     </div>
                                 </a>

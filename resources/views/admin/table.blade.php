@@ -43,6 +43,7 @@
                 <div class="container" style="margin-top: -70px;">
                     <div class="row padding-bottom">
                         <div class="col-md-12">
+                            {{-- Admins --}}
                             <div class="accrodation">
                                 <span class="acc-trigger"><a href="#"><span style="color: blue;">{{$admins->count()}}</span> - Admin</a></span>
 
@@ -83,6 +84,55 @@
                                             @endforeach
                                                 @else
                                                     <p> Il n'ya aucun admin!</p>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                </div>
+
+                            </div>
+                            {{-- users --}}
+                            <div class="accrodation">
+                                <span class="acc-trigger"><a href="#"><span style="color: blue;">{{$users->count()}}</span> - Utilisateurs</a></span>
+
+                                <div class="acc-container">
+                                    <div class="content ptext">
+                                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                            <thead>
+                                            <tr>
+                                                <th>Nom</th>
+                                                <th>Prénom</th>
+                                                <th>e-mail</th>
+                                                <th>phone</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @if ($users->count())
+                                                @foreach ($users as $user)
+                                                <tr>
+                                                    <td>{{ $user->name }}</td>
+                                                    <td>{{ $user->last_name }}</td>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>{{ $user->phone }}</td>
+                                                    <td>
+                                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                                            <a type="button" class="btn btn-primary"
+                                                                {{-- href="{{ route('user.edit', $user->id)}}" --}}
+                                                            data-toggle="tooltip" data-placement="left" data-original-title="Modifier">
+                                                                <i class="fa fas fa-edit"></i>
+                                                            </a>
+                                                            <a type="button" class="btn btn-danger"
+                                                            {{-- href="{{ route('user.destroy', $user->id)}}" --}}
+                                                            data-toggle="tooltip" data-placement="right" data-original-title="Supprimer">
+                                                                <i class="fa fas fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                                @else
+                                                    <p> Il n'ya aucun utilisateur!</p>
                                                 @endif
                                             </tbody>
                                         </table>
@@ -187,6 +237,63 @@
 
                             </div>
                             {{-- Message --}}
+                            <div class="accrodation">
+                                <span class="acc-trigger"><a href="#"><span style="color: blue">{{$commandes->count()}}</span> - Commandes</a></span>
+                                <div class="acc-container">
+                                    <div class="content ptext">
+                                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                            <thead>
+                                            <tr>
+                                                <th>Photo du produit</th>
+                                                <th>Nom du produit</th>
+                                                <th>prix</th>
+                                                <th>quantité</th>
+                                                <th>Remise</th>
+                                                <th>Mode de paiement</th>
+                                                <th>Nom du client</th>
+                                                <th>email du client</th>
+                                                <th>Numéro du client</th>
+                                                <th>Adresse du client</th>
+                                                <th>Temps de commande</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @if ($commandes->count())
+                                                @foreach ($commandes as $commande)
+                                                <tr>
+                                                    <td style="color:blue;"> <img src="/storage/{{ $commande->photo_product }}" style="height: 50px; width:40px;;"></td>
+                                                    <td style="color:blue;">{{ $commande->name_product }}</td>
+                                                    <td style="color:blue;">{{ $commande->prix_product }}</td>
+                                                    <td style="color:blue;">{{ $commande->quantite_product }}</td>
+                                                    <td style="color:blue;">{{ $commande->remise_product }}</td>
+                                                    <td style="color:blue;">{{ $commande->mode_payment }}</td>
+                                                    <td style="color:blue;">{{ $commande->name_client }}</td>
+                                                    <td style="color:blue;">{{ $commande->email_client }}</td>
+                                                    <td style="color:blue;">{{ $commande->phone_client }}</td>
+                                                    <td style="color:blue;">{{ $commande->adresse_user }}</td>
+                                                    <td style="color:blue;">{{ $commande->created_at->diffForHumans() }}</td>
+                                                    <td>
+                                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                                            <a type="button" class="btn btn-danger"
+                                                            href="{{ route('order.destroy', $commande->id)}}"
+                                                            data-toggle="tooltip" data-placement="right" data-original-title="Supprimer">
+                                                                <i class="fa fas fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                                @else
+                                                    <p> Il n'ya aucune commande!</p>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                </div>
+
+                            </div>
+                            {{-- Commandes --}}
                             <div class="accrodation">
                                 <span class="acc-trigger"><a href="#"><span style="color: blue">{{$messages->count()}}</span> - Message réçus</a></span>
                                 <div class="acc-container">

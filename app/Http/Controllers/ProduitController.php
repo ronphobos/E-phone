@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorie;
 use App\Models\Produit;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProduitController extends Controller
@@ -111,7 +112,8 @@ class ProduitController extends Controller
     public function show(Produit $id)
     {
         $title = "DETAIL DU PRODUIT";
-        return view('users.produit_detail', compact('title','id'));
+        $users = User::get();
+        return view('users.produit_detail', compact('title','id', 'users'));
     }
 
     /**

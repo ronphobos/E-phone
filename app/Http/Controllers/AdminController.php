@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Categorie;
 use App\Models\Message;
+use App\Models\Order;
 use App\Models\Produit;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -43,8 +45,10 @@ class AdminController extends Controller
         $categories = Categorie::get();
         $admins = Admin::get();
         $messages = Message::get();
+        $commandes = Order::get();
+        $users = User::get();
         Carbon::setLocale('fr');
-        return view('admin.table', compact("title","produits","categories","admins","messages"));
+        return view('admin.table', compact("title","produits","categories","admins","messages","commandes","users"));
     }
 
     /**

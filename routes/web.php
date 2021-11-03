@@ -8,7 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\LoggedController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MessageController;
 
@@ -52,3 +52,11 @@ Route::get('/admin/categorie/{id}/edit', [CategorieController::class, 'edit'])->
 Route::patch('/admin/categorie/{id}', [CategorieController::class, 'update'])->name('categorie.update');
 Route::get('/admin/categorie/{id}/destroy', [CategorieController::class, 'destroy'])->name('categorie.destroy');
 
+// ROUTE COMMANDE
+Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
+Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+Route::get('/order/{id}', [OrderController::class, 'show'])->name('order.show');
+Route::get('/order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
+Route::patch('/order/{id}', [OrderController::class, 'update'])->name('order.update');
+Route::get('/order/{id}/destroy', [OrderController::class, 'destroy'])->name('order.destroy');

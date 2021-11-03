@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use App\Models\Produit;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -26,7 +27,8 @@ class UserController extends Controller
     public function contact()
     {
         $title = "CONTACT";
-        return view('users.contact', compact('title'));
+        $users = User::get();
+        return view('users.contact', compact('title', 'users'));
     }
 
     public function termes()
