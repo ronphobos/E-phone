@@ -28,8 +28,11 @@ class LoginController extends Controller
             return redirect()->back()->with('erreur', 'Emai/Mot de passe incorrecte');
         }
 
-        // REDIRECTION
-        return redirect()->route('user.index')->with('message', 'Vous êtes bien connecté!');
+        if (auth()->user()->user_type === 'ADM') {
+        return redirect()->route('produit.create');
+        }else{
+            return redirect()->route('user.index')->with('message', 'Vous êtes bien connecté!');
+        }
     }
 
     public function logout()

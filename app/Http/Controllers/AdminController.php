@@ -10,6 +10,7 @@ use App\Models\Produit;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -19,6 +20,11 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+     return $this->middleware('auth');
+    }
+
     public function index()
     {
         $title = "ADMINISTRATEUR";
@@ -47,8 +53,15 @@ class AdminController extends Controller
         $messages = Message::get();
         $commandes = Order::get();
         $users = User::get();
+        $admins = User::where('user_type','ADM')->get();
         Carbon::setLocale('fr');
-        return view('admin.table', compact("title","produits","categories","admins","messages","commandes","users"));
+        return view('admin.table', compact("title","produits","categories","admins","messages","commandes","users", "admins"));
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('user.index');
     }
 
     /**

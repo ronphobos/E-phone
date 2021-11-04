@@ -34,6 +34,7 @@
                     </form>
                 </div>
             </div>
+
         </section>
         <section class="content-central">
             <div class="content_info content_resalt">
@@ -42,6 +43,11 @@
                     </div>
                 </div>
                 <div class="container">
+                    @if (Session('message'))
+                    <div class="alert alert-warning" role="alert">
+                        {{ session('message') }}
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-12">
                             <ul id="sponsors" class="tooltip-hover">

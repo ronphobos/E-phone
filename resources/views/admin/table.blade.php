@@ -1,4 +1,4 @@
-@extends('admin.layout.header')
+@extends('layout.header')
 @section('container.tables')
 
     <div id="layout">
@@ -7,7 +7,7 @@
 
             </div>
         </div>
-        @include('admin.layout.navbar')
+        @include('layout.info_head')
 
         <div class="section-title-01 honmob">
             <div class="bg_parallax image_02_parallax"></div>
@@ -64,7 +64,7 @@
                                                 @foreach ($admins as $admin)
                                                 <tr>
                                                     <td>{{ $admin->name }}</td>
-                                                    <td>{{ $admin->lastname }}</td>
+                                                    <td>{{ $admin->last_name }}</td>
                                                     <td>{{ $admin->email }}</td>
                                                     <td>
                                                         <div class="btn-group" role="group" aria-label="Basic example">

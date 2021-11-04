@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->integer('phone');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('user_type')->default('USR')->comment('champs de user ou admin');
             $table->rememberToken();
             $table->timestamps();
         });

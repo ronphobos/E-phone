@@ -31,6 +31,14 @@
 @yield('users.register')
 @yield('produit_detail')
 @yield('produit_all')
+@yield('container.produit.create')
+@yield('container.product.modifie')
+@yield('container.admin.index')
+@yield('container.product')
+@yield('container.tables')
+@yield('container.categorie.create')
+@yield('container.categorie.edit')
+@yield('container.categorie')
 
 </body>
 </html>

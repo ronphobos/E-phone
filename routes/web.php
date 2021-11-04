@@ -29,33 +29,34 @@ Route::post('/user/register', [RegisterController::class, 'doregister'])->name('
 Route::get('/user/logout', [LoginController::class, 'logout'])->name('user.logout');
 
 //ROUTE ADMIN
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::get('/admin/table', [AdminController::class, 'table'])->name('admin.table');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware(('authadmin'));
+Route::get('/admin/table', [AdminController::class, 'table'])->name('admin.table')->middleware(('auth'));
+Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 // ROUTE PRODUIT
-Route::get('/admin/produit', [ProduitController::class, 'index'])->name('produit.index');
-Route::get('/admin/produit/create', [ProduitController::class, 'create'])->name('produit.create');
-Route::get('/admin/produit/modifie', [ProduitController::class, 'modifie'])->name('produit.modifie');
-Route::post('/admin/produit', [ProduitController::class, 'store'])->name('produit.store');
+Route::get('/admin/produit', [ProduitController::class, 'index'])->name('produit.index')->middleware(('auth'));
+Route::get('/admin/produit/create', [ProduitController::class, 'create'])->name('produit.create')->middleware(('auth'));
+Route::get('/admin/produit/modifie', [ProduitController::class, 'modifie'])->name('produit.modifie')->middleware(('authadmin'));
+Route::post('/admin/produit', [ProduitController::class, 'store'])->name('produit.store')->middleware(('auth'));
 Route::get('/produit/{id}/show', [ProduitController::class, 'show'])->name('produit.show');
-Route::get('/admin/produit/{id}/edit', [ProduitController::class, 'edit'])->name('produit.edit');
-Route::patch('/admin/produit/{id}', [ProduitController::class, 'update'])->name('produit.update');
-Route::get('/admin/produit/{id}/destroy', [ProduitController::class, 'destroy'])->name('produit.destroy');
+Route::get('/admin/produit/{id}/edit', [ProduitController::class, 'edit'])->name('produit.edit')->middleware(('auth'));
+Route::patch('/admin/produit/{id}', [ProduitController::class, 'update'])->name('produit.update')->middleware(('auth'));
+Route::get('/admin/produit/{id}/destroy', [ProduitController::class, 'destroy'])->name('produit.destroy')->middleware(('auth'));
 
 // ROUTE CATEORIE
-Route::get('/admin/categorie', [CategorieController::class, 'index'])->name('categorie.index');
-Route::get('/admin/categorie/create', [CategorieController::class, 'create'])->name('categorie.create');
-Route::post('/admin/categorie', [CategorieController::class, 'store'])->name('categorie.store');
-Route::get('/admin/categorie/{id}', [CategorieController::class, 'show'])->name('categorie.show');
-Route::get('/admin/categorie/{id}/edit', [CategorieController::class, 'edit'])->name('categorie.edit');
-Route::patch('/admin/categorie/{id}', [CategorieController::class, 'update'])->name('categorie.update');
-Route::get('/admin/categorie/{id}/destroy', [CategorieController::class, 'destroy'])->name('categorie.destroy');
+Route::get('/admin/categorie', [CategorieController::class, 'index'])->name('categorie.index')->middleware(('auth'));
+Route::get('/admin/categorie/create', [CategorieController::class, 'create'])->name('categorie.create')->middleware(('auth'));
+Route::post('/admin/categorie', [CategorieController::class, 'store'])->name('categorie.store')->middleware(('auth'));
+Route::get('/admin/categorie/{id}', [CategorieController::class, 'show'])->name('categorie.show')->middleware(('auth'));
+Route::get('/admin/categorie/{id}/edit', [CategorieController::class, 'edit'])->name('categorie.edit')->middleware(('auth'));
+Route::patch('/admin/categorie/{id}', [CategorieController::class, 'update'])->name('categorie.update')->middleware(('auth'));
+Route::get('/admin/categorie/{id}/destroy', [CategorieController::class, 'destroy'])->name('categorie.destroy')->middleware(('auth'));
 
 // ROUTE COMMANDE
-Route::get('/order', [OrderController::class, 'index'])->name('order.index');
-Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
-Route::post('/order', [OrderController::class, 'store'])->name('order.store');
-Route::get('/order/{id}', [OrderController::class, 'show'])->name('order.show');
-Route::get('/order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
-Route::patch('/order/{id}', [OrderController::class, 'update'])->name('order.update');
-Route::get('/order/{id}/destroy', [OrderController::class, 'destroy'])->name('order.destroy');
+Route::get('/order', [OrderController::class, 'index'])->name('order.index')->middleware(('auth'));
+Route::get('/order/create', [OrderController::class, 'create'])->name('order.create')->middleware(('auth'));
+Route::post('/order', [OrderController::class, 'store'])->name('order.store')->middleware(('auth'));
+Route::get('/order/{id}', [OrderController::class, 'show'])->name('order.show')->middleware(('auth'));
+Route::get('/order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit')->middleware(('auth'));
+Route::patch('/order/{id}', [OrderController::class, 'update'])->name('order.update')->middleware(('auth'));
+Route::get('/order/{id}/destroy', [OrderController::class, 'destroy'])->name('order.destroy')->middleware(('auth'));

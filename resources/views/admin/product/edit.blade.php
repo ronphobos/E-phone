@@ -1,4 +1,4 @@
-@extends('admin.layout.header')
+@extends('layout.header')
 
 @section('container.product.modifie')
 
@@ -7,7 +7,7 @@
 
         </div>
 
-        @include('admin.layout.navbar')
+        @include('layout.info_head')
 
         <div class="section-title-01 honmob">
             <div class="bg_parallax image_01_parallax"></div>
