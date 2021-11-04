@@ -59,7 +59,7 @@
         @if (Auth::user()->user_type === 'ADM')
         <ul class="collapse">
             <li class="title">
-                <a href="{{ route('admin.index') }}"><img src="{{asset('images/logo.png')}}"></a>
+                <a href="{{ route('admin.index') }}"><img src=""></a>
             </li>
             <li> <a href="javascript:void(0);">Voir les tables</a>
                 <ul class="drop-down one-column hover-fade">
@@ -102,7 +102,7 @@
         <ul class="collapse">
             @guest
             <li class="title">
-                <a href="{{ route('user.index') }}"><img src="images/logo.png"></a>
+                <a href="{{ route('user.index') }}"><img src=""></a>
             </li>
             <li> <a href="{{ route('user.index') }}">Accueil</a></li>
             <li> <a href="{{ route('user.produit.all') }}">Produits</a></li>
