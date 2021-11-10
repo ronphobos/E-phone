@@ -77,6 +77,20 @@
                                     </div>
                                 </form>
                             </div>
+                             {{-- connecter avec google --}}
+                             <div class="thinborder-ontop" style="margin-top: 10px; text-align:center;">
+                                <div class="form-group row">
+                                <a href="#">
+                                    <div class="col-md-6">
+                                            <h4>Se connecter avec Google</h4>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="{{ asset('images/google_logo.svg.png') }}" style="width: 45px; height:40px;" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {{-- fin --}}
                         </div>
                     </div>
                 </div>
