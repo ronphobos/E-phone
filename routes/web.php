@@ -43,6 +43,9 @@ Route::get('/admin/produit/{id}/edit', [ProduitController::class, 'edit'])->name
 Route::patch('/admin/produit/{id}', [ProduitController::class, 'update'])->name('produit.update')->middleware(('auth'));
 Route::get('/admin/produit/{id}/destroy', [ProduitController::class, 'destroy'])->name('produit.destroy')->middleware(('auth'));
 
+// RECHERCHER UN PRODUIT PAR SON NOM
+Route::get("/search", [ProduitController::class, 'search']);
+
 // ROUTE CATEORIE
 Route::get('/admin/categorie', [CategorieController::class, 'index'])->name('categorie.index')->middleware(('auth'));
 Route::get('/admin/categorie/create', [CategorieController::class, 'create'])->name('categorie.create')->middleware(('auth'));

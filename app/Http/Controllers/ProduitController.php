@@ -24,6 +24,46 @@ class ProduitController extends Controller
         return view('admin.product.index', compact("title","produits","categories"));
     }
 
+    public function search(Request $request)
+    {
+        if($request->ajax()){
+            $data = Produit::where('name','like','%'.$request->search.'%')
+            ->orwhere('category','like','%'.$request->search.'%')->get();
+
+        $text = '';
+        if(count($data)>0){
+
+            $text = '
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+
+                    </tr>
+                </thead>
+                <tbody>';
+
+                    foreach($data as $row){
+                        $text .='
+                        <tr>
+                        <td scope="row">'.$row->name.'</td>
+                        <td scope="row">'.$row->category.'</td>
+                        </tr>
+                        ';
+                    }
+
+            $text .=
+            '</tbody>
+            </table>';
+
+        }else{
+            $text = 'Pas de résultat!';
+        }
+        }
+        return $text;
+    }
+
     public function produit()
     {
         $title = "TOUS LES PRODUITS";

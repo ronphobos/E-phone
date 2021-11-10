@@ -27,12 +27,14 @@
                     <p class="lead">Commandez nos services à un prix incroyable, </p>
                 </div>
                 <div class="filter-header">
-                    <form id="sform" action="searchservices" method="post">
-                        <input type="text" id="q" name="q" required="required" placeholder="Que recherchez vous?"
-                            class="input-large typeahead" autocomplete="off">
-                        <input type="submit" name="submit" value="Chercher">
-                    </form>
+
+                    <input type="text" id="search" name="search" placeholder="Que recherchez vous?"
+                        class="form-control" onfocus="" autocomplete="off">
+
+                    <div id="search_list"></div>
+
                 </div>
+
             </div>
 
         </section>
@@ -111,7 +113,26 @@
         @include('admin.layout.footer')
     </div>
 
+
+
    @include('admin.layout.script')
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script>
+       $(document).ready(function(){
+        $('#search').on('keyup', function(){
+            var query = $(this).val();
+            $.ajax({
+                url:"/search",
+                type:"GET",
+                data:{'search:'query},
+                success:function(data){
+                    $('#search_list').html(data);
+                }
+        });
+        // fin de l'appel ajax
+       });
+     });
+   </script>
 
     <script type="text/javascript">
         jQuery(document).ready(function () {

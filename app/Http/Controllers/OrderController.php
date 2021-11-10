@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -69,7 +70,11 @@ class OrderController extends Controller
         if ($request->mode_payment == 'mtn') {
             return redirect()->route('order.index');
         }
-        return redirect()->route('user.index')->with('message', 'Votre commande est validé, la date de livraison est :'.now());
+
+        Carbon::setLocale('fr');
+        $date_maintenant = Carbon::now()->addDays(3)->toDateString();
+
+        return redirect()->route('user.index')->with('message', 'Votre commande est validé, la date de livraison est :'.$date_maintenant);
 
     }
 
